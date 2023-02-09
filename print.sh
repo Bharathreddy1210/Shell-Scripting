@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo -e hello intellij\nDevops practice
+echo -e "hello intellij\nDevops practice"
