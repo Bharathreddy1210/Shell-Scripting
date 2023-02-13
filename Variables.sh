@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
- a=n
- b=Devops practice
+a=n
+b=Devops
 
-echo $avalue
-echo $b
+echo ${a}value
+echo $b practice
