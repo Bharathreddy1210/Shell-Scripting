@@ -17,3 +17,10 @@ echo result is $add
 
 Date=$(date +%F)
 echo -e today date is $Date
+
+## Scalar
+
+B=(30 first 40 second)
+echo the first value of the set = ${B[0]}
+echo the second value of the set = ${B[1]}
+echo to dispaly the total values = ${B[*]}
