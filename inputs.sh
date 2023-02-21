@@ -10,3 +10,5 @@ echo "$0" is script name
 echo "$1" first argument
 echo "$*" all arguments
 echo "$#" number of arguments
+
+
