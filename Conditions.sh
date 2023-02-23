@@ -15,7 +15,8 @@
 #echo condition satisfied
 #fi
 
-'c'="xyz"
+# shellcheck disable=SC2034
+c="xyz"
 if [ '$c' == "xyz" ]; then
   echo "the equation is true"
 fi
