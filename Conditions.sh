@@ -15,6 +15,7 @@
 #echo condition satisfied
 #fi
 
+
 # shellcheck disable=SC2034
 c="xyz"
 if [ '$c' == "xyz" ]; then
