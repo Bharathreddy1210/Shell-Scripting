@@ -17,9 +17,9 @@
 
 
 # shellcheck disable=SC2034
-c="xyz"
+a="xyz"
 
-if [ '$c' == "xyz" ]; then
+if [ '$a' == "xyz" ]; then
   echo "the equation is true"
 fi
 
