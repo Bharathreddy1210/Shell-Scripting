@@ -20,7 +20,7 @@
 c="xyz"
 
 if [ '$c' == "xyz" ]; then
-  echo "the equation is true"
+  echo "the equation is fine"
 fi
 
 if [ '$b' != "xyz" ]; then
