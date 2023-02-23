@@ -15,7 +15,7 @@
 #echo condition satisfied
 #fi
 
-c="xyz"
+'c'="xyz"
 if [ '$c' == "xyz" ]; then
   echo "the equation is true"
 fi
@@ -23,5 +23,6 @@ fi
 if [ '$b' != "xyz" ]; then
   echo "the equation is false"
 fi
+
 
 
