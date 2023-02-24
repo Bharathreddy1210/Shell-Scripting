@@ -27,4 +27,12 @@ if [ "$b" != "xyz" ]; then
   echo "the equation is false"
 fi
 
+# Else
 
+# if [ "$a" == "$b" ]; then
+# echo "the statement is true"
+#else
+#echo "the statement is false"
+# fi
+
+# Else IF
