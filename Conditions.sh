@@ -19,11 +19,11 @@
 # shellcheck disable=SC2034
 a="xyz"
 
-if [ '$a' == "xyz" ]; then
+if [ "$a" == "xyz" ]; then
   echo "the equation is true"
 fi
 
-if [ '$b' != "xyz" ]; then
+if [ "$b" != "xyz" ]; then
   echo "the equation is false"
 fi
 
