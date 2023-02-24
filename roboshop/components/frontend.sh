@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-USER_ID=$(id-u)
+USER_ID=$(id -u)
 if [ "$USER_ID" -ne 0 ]; then
   echo "run as a root user"
   exit 1
