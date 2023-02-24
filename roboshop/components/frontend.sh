@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+USER_ID=$(id-u)
+if [ "$USER_ID" -ne 0 ]; then
+  echo "run as a root user"
+  exit 1
+fi
+
 echo -e "\e[36m Installing nginx \e[0m"
 yum install nginx -y
 
