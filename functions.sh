@@ -8,7 +8,9 @@
 Print_statement() {
   echo function to be declare at the beginning,
   echo later it can be called in the code
-  echo Name assign to the set of commands
+  echo Name assign to the ${1} of commands
+  echo first argument in the function is = ${1}
 }
 
-Print_statement
+Print_statement set
+
