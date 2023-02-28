@@ -15,7 +15,7 @@ print() {
 }
 
 LOG_FILE=/tmp/roboshop.log
-rm -f $LOG_FILE
+rm -rf $LOG_FILE
 
 USER_ID=$(id -u)
 if [ "$USER_ID" -ne 0 ]; then
