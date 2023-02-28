@@ -48,5 +48,5 @@ mv localhost.conf /etc/nginx/default.d/roboshop.conf >>$LOG_FILE
 Statcheck $?
 
 print " Starting nginx "
-systemctl restart nginx && syetemctl enable nginx
+systemctl restart nginx && systemctl enable nginx >>$LOG_FILE
 Statcheck $?
