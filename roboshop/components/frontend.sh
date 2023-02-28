@@ -9,7 +9,9 @@ Statcheck() {
   fi
   }
 
-
+print() {
+  echo -e "\e[36m $1 \e[0m"
+}
 USER_ID=$(id -u)
 if [ "$USER_ID" -ne 0 ]; then
   echo "run as a root user"
@@ -18,30 +20,32 @@ fi
 
 statcheck $?
 
-echo -e "\e[36m Installing nginx \e[0m"
+print " Installing nginx "
 yum install nginx -y
 
 statcheck $?
 
-echo -e "\e[36m Downloading nginx \e[0m"
+print " Downloading nginx "
 curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
 
 statcheck $?
 
-echo -e "\e[36m Cleaning up the old nginx content and downloading the new file \e[0m"
+print " Cleaning up the old nginx content "
 rm -rf /usr/share/nginx/html/*
+statcheck $?
+
 # shellcheck disable=SC2164
 cd /usr/share/nginx/html/
-unzip /tmp/frontend.zip
-mv frontend-main/* .
-mv static/* .
-rm -rf frontend-main README.md
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
+
+print " download the new content "
+unzip /tmp/frontend.zip && mv frontend-main/* . && mv static/* .
 
 statcheck $?
 
-echo -e "\e[36m Starting nginx \e[0m"
-systemctl restart nginx
-systemctl enable nginx
+print " update the system content "
+mv localhost.conf /etc/nginx/default.d/roboshop.conf
+statcheck $?
 
+print " Starting nginx "
+systemctl restart nginx && syetemctl enable nginx
 statcheck $?
