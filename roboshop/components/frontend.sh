@@ -29,3 +29,4 @@ Statcheck $?
 print " Starting nginx "
 systemctl restart nginx && systemctl enable nginx &>>$LOG_FILE
 Statcheck $?
+
