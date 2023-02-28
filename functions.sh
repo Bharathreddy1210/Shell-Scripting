@@ -12,5 +12,8 @@ Print_statement() {
   echo first argument in the function is = ${1}
 }
 
+
+##Main program
 Print_statement set
+
 
