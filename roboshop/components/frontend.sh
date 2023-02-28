@@ -22,31 +22,31 @@ if [ "$USER_ID" -ne 0 ]; then
   echo "run as a root user"
   exit 1
 fi
-statcheck $?
+Statcheck $?
 
 print " Installing nginx " >>$LOG_FILE
 yum install nginx -y
-statcheck $?
+Statcheck $?
 
 print " Downloading nginx "
-curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>$LOG_FILE
-statcheck $?
+curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zi" >>$LOG_FILE
+Statcheck $?
 
 print " Cleaning up the old nginx content "
 rm -rf /usr/share/nginx/html/* >>$LOG_FILE
-statcheck $?
+Statcheck $?
 
 # shellcheck disable=SC2164
 cd /usr/share/nginx/html/
 
 print " download and extract the new content "
 unzip /tmp/frontend.zip >>$LOG_FILE && mv frontend-main/* . >>$LOG_FILE && mv static/* . >>$LOG_FILE
-statcheck $?
+Statcheck $?
 
 print " update the system configuration "
 mv localhost.conf /etc/nginx/default.d/roboshop.conf >>$LOG_FILE
-statcheck $?
+Statcheck $?
 
 print " Starting nginx "
 systemctl restart nginx && syetemctl enable nginx
-statcheck $?
+Statcheck $?
