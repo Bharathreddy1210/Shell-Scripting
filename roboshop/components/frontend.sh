@@ -10,8 +10,13 @@ Statcheck() {
   }
 
 print() {
+  echo -e "...............$1............" >>$LOG_FILE
   echo -e "\e[36m $1 \e[0m"
 }
+
+LOG_FILE=/tmp/roboshop.conf
+rm -f $LOG_FILE
+
 USER_ID=$(id -u)
 if [ "$USER_ID" -ne 0 ]; then
   echo "run as a root user"
@@ -20,30 +25,28 @@ fi
 
 statcheck $?
 
-print " Installing nginx "
+print " Installing nginx " >>$LOG_FILE
 yum install nginx -y
 
 statcheck $?
 
 print " Downloading nginx "
-curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
-
+curl -f -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip" >>$LOG_FILE
 statcheck $?
 
 print " Cleaning up the old nginx content "
-rm -rf /usr/share/nginx/html/*
+rm -rf /usr/share/nginx/html/* >>$LOG_FILE
 statcheck $?
 
 # shellcheck disable=SC2164
 cd /usr/share/nginx/html/
 
-print " download the new content "
-unzip /tmp/frontend.zip && mv frontend-main/* . && mv static/* .
-
+print " download and extract the new content "
+unzip /tmp/frontend.zip >>$LOG_FILE && mv frontend-main/* . >>$LOG_FILE && mv static/* . >>$LOG_FILE
 statcheck $?
 
-print " update the system content "
-mv localhost.conf /etc/nginx/default.d/roboshop.conf
+print " update the system configuration "
+mv localhost.conf /etc/nginx/default.d/roboshop.conf >>$LOG_FILE
 statcheck $?
 
 print " Starting nginx "
