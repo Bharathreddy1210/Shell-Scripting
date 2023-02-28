@@ -6,7 +6,8 @@
 #}
 
 Print_statement() {
-  echo function declare at the beginning, before you call the code
+  echo function to be declare at the beginning,
+  echo later it can be called in the code
   echo Name assign to the set of commands
 }
 
