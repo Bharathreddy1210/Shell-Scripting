@@ -22,12 +22,10 @@ if [ "$USER_ID" -ne 0 ]; then
   echo "run as a root user"
   exit 1
 fi
-
 statcheck $?
 
 print " Installing nginx " >>$LOG_FILE
 yum install nginx -y
-
 statcheck $?
 
 print " Downloading nginx "
