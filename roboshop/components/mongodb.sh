@@ -10,7 +10,7 @@ Statcheck() {
   }
 
 print() {
-  echo -e "...............$1............" >>$LOG_FILE
+  echo -e "...............$1............" &>>$LOG_FILE
   echo -e "\e[36m $1 \e[0m"
 }
 
@@ -31,8 +31,8 @@ print "Installing mongodb"
 yum install -y mongodb-org &>>$LOG_FILE
 Statcheck $?
 
-print"update mongodb with address"
-sed -i -e 's/127.0.0.1/0.0.0.0' /etc/mongod.conf
+print "update mongodb with address"
+sed -i 's/127.0.0.1/0.0.0.0' /etc/mongod.conf
 Statcheck $?
 
 print "start mongodb"
