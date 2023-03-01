@@ -1,0 +1,35 @@
+#!/bin/bash
+
+source components/common.sh
+
+print "configure yum repos"
+curl -f-sL https://rpm.nodesource.com/setup_lts.x | bash - &>>LOG_FILE
+Stacheck $?
+
+print "Install Nodejs"
+yum install nodejs -y &>>LOG_FILE
+Statcheck $?
+
+print"Add Application User"
+useradd ${APP_USER} &>>LOG_FILE
+Stacheck $?
+
+print "Download the App content"
+curl -f -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>>LOG_FILE
+Statcheck $?
+
+print"cleanup the old content"
+rm -rf /home/roboshop/catalogue &>>LOG_FILE
+Statcheck $?
+
+print"Extract the App content"
+cd /home/roboshop && unzip /tmp/catalogue.zip &>>LOG_FILE && mv catalogue-main catalogue &>>LOG_FILE
+Statcheck $?
+
+print"install App dependencies"
+cd /home/roboshop/catalogue &>>LOG_FILE && npm install &>>LOG_FILE
+Statcheck $?
+
+
+
+
