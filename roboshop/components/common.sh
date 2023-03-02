@@ -21,7 +21,7 @@ if [ "$USER_ID" -ne 0 ]; then
 fi
 
 LOG_FILE=/tmp/roboshop.log
-rm -rf $LOG_FILE
+rm -rf ${LOG_FILE}
 
 # shellcheck disable=SC2034
 APP_USER=roboshop
