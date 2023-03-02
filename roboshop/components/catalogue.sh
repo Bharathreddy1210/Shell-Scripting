@@ -11,7 +11,7 @@ yum install nodejs -y &>>LOG_FILE
 Statcheck $?
 
 print "add the application user"
-id "${APP_USER &>>${LOG_FILE}}"
+id "${APP_USER &>>{LOG_FILE}}"
 if [ $? -ne 0 ]; then
   useradd ${APP_USER} &>>LOG_FILE
 fi
