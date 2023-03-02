@@ -22,12 +22,12 @@ print " download and extract the new content "
 unzip /tmp/frontend.zip >>$LOG_FILE && mv frontend-main/* . &>>$LOG_FILE && mv static/* . &>>$LOG_FILE
 Statcheck $?
 
-print " update the system configuration "
+print " update roboshop configuration "
 mv localhost.conf /etc/nginx/default.d/roboshop.conf &>>$LOG_FILE
 sed -i -e '/catalogue/s/localhost/catalogue.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
 Statcheck $?
 
 print " Starting nginx "
-systemctl restart nginx && systemctl enable nginx &>>$LOG_FILE
+systemctl restart nginx &>>$LOG_FILE && systemctl enable nginx &>>$LOG_FILE
 Statcheck $?
 
