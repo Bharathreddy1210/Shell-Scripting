@@ -29,3 +29,5 @@ aws ec2 run-instances --image-id ${AMI_ID} --instance-type t2.micro --tag-specif
 
 
 
+
+
