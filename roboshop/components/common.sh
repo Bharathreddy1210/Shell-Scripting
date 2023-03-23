@@ -53,7 +53,13 @@ SERVICE_SETUP(){
     Statcheck $?
 
     print "Setup SystemID File"
-    sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' /home/roboshop/$COMPONENT/systemd.service &>>$LOG_FILE && mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service &>>$LOG_FILE
+    sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' \
+    -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' \
+    -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' \
+    -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' \
+    -e 's/CARTENDPOINT/cart.roboshop.internal/' \
+    -e 's/DBHOST/mysql.roboshop.internal/' \
+    /home/roboshop/$COMPONENT/systemd.service &>>$LOG_FILE && mv /home/roboshop/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service &>>$LOG_FILE
     Statcheck $?
 
     print "restart ${COMPONENT} service"
@@ -104,7 +110,7 @@ MAVEN() {
   cd /home/$(APP_USER)/${COMPONENT} && mvn clean package &>>$LOG_FILE && mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
   Statcheck $?
 
-
+  SERVICE_SETUP
 
 
 }
