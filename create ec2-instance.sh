@@ -5,3 +5,5 @@ AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Pra
 echo $AMI_ID
 
 
+
+
